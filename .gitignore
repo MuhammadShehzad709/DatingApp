@@ -1,0 +1,52 @@
+# =========================
+# .NET specific ignores
+# =========================
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+# User-specific files
+*.user
+*.vspscc
+*.vssscc
+*.suo
+*.sln.docstates
+
+# Visual Studio related
+.vs/
+*.swp
+*.tmp
+
+# =========================
+# Angular specific ignores
+# =========================
+# compiled output
+/client/dist
+/client/tmp
+/client/out-tsc
+
+# Node modules
+/client/node_modules/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Angular cache
+/client/.angular/cache
+
+# =========================
+# General ignores
+# =========================
+.env
+*.log
+*.DS_Store
+Thumbs.db
