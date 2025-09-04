@@ -5,7 +5,16 @@
   "projects": {
     "client": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "path": "src"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true,
+          "path": "src/core/services"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -51,6 +60,11 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "ssl": true,
+            "sslKey": "ssl/localhost-key.pem",
+            "sslCert": "ssl/localhost.pem"
+          },
           "configurations": {
             "production": {
               "buildTarget": "client:build:production"
@@ -81,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2b350525-2f44-4096-b2e4-4137fb35867a"
   }
 }
