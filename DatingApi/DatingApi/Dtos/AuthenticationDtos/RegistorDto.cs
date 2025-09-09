@@ -1,5 +1,13 @@
-﻿namespace DatingApi.Dtos.AuthenticationDtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DatingApi.Dtos.AuthenticationDtos
 {
-    public record RegistorDto(string DisplayName,string Email,string Password);
+    public record RegistorDto(
+        [Required]
+        string DisplayName,
+        [Required]
+        string Email,
+        [Required]
+        string Password);
  
 }

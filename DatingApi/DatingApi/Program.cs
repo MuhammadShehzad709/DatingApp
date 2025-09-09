@@ -1,4 +1,5 @@
 using DatingApi.Data;
+using DatingApi.Middleware;
 using DatingApi.Repositories.AuthenticationRepositories;
 using DatingApi.Services.AuthenticationServices;
 using DatingApi.Services.TokenService;
@@ -34,12 +35,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();

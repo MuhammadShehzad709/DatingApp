@@ -3,12 +3,14 @@ import { inject, Injectable, signal } from '@angular/core';
 import { RegisterCreds, User } from '../../types/user';
 import { tap } from 'rxjs';
 import { ApiResponse } from '../../types/ApiResponse';
+import { ToastService } from './toast-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
   private http = inject(HttpClient);
+  toastService = inject(ToastService);
   currentUser = signal<User | null>(null);
   baseUrl = 'https://localhost:5001/api/';
   //Register Method is here
@@ -30,9 +32,11 @@ export class AccountService {
       tap(user => {
         if (user.isSuccess && user.data) {
           this.setCurrentUser(user);
+          this.toastService.success('Login Successfully')
         }
         else if (!user.isSuccess) {
-          alert(user.error);
+          console.log(user)
+          this.toastService.error(user.error!)
         }
       })
     )
