@@ -1,17 +1,51 @@
 <div class="card bg-base-100 w-1/2 mx-auto flex flex-col p-6 rounded-lg shadow-lg">
-    <div class="card-title justify-center text-3xl text-primary">
-        <div class="card-body w-full">
-            <form #registerForm="ngForm" class="flex flex-col gap-4 w-full" (ngSubmit)="register()">
-                <input class="input w-full" name="email" [(ngModel)]="creds.email" placeholder="Email">
-                <input class="input w-full" name="DisplayName" [(ngModel)]="creds.DisplayName"
-                    placeholder="Display Name">
-                <input type="password" class="input w-full" name="password" [(ngModel)]="creds.password"
-                    placeholder="Password">
-                <div class="flex items-center justify-end gap-3">
-                    <button type="button" (click)="cancel()" class="btn">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
-            </form>
+    <div class="card-title justify-center text-3xl text-primary">SignUp</div>
+    <div class="card-body w-full">
+        <div class="steps">
+            <li class="step step-primary">credential</li>
+            <li class="step" [class.step-primary]="currentStep()===2">Profile</li>
         </div>
+        @if(currentStep()===1){
+        <form [formGroup]="credentialForm" class="flex flex-col gap-4 w-full steps">
+            <app-input-text class="mt-2" label="Email" formControlName="email" />
+            <app-input-text label="displayName" formControlName="displayName" />
+            <app-input-text label="password" formControlName="password" />
+            <app-input-text label="confirmPassword" formControlName="confirmPassword" />
+            <div class="flex items-center gap-3 justify-end">
+                <button type="button" (click)="cancel()" class="btn">Cancel</button>
+                <button [disabled]="!credentialForm.valid" (click)="nextStep()" type="button"
+                    class="btn btn-primary">Next</button>
+            </div>
+        </form>
+        }
+        @if(currentStep()===2){
+        <form [formGroup]="profileForm" class="flex flex-col w-full gap-4 steps">
+            <div class="flex items-center gap-4">
+                <div class="font-semibold">Gender:</div>
+                <label class="flex gap-3 items-center">
+                    <span>Male</span>
+                    <input type="radio" formControlName="gender" value="male" class="radio radio-primary">
+                </label>
+                <label class="flex gap-3 items-center">
+                    <span>Female</span>
+                    <input type="radio" formControlName="gender" value="Female" class="radio radio-primary">
+                </label>
+            </div>
+            <app-input-text [maxDate]="getMaxDate()" type="date" label="date" formControlName="dateOfBirth" />
+            <app-input-text label="City" formControlName="city" />
+            <app-input-text label="Country" formControlName="country" />
+            <div class="flex items-center gap-3 justify-end">
+                <button type="button" (click)="prevStep()" class="btn">Back</button>
+                <button [disabled]="!profileForm.valid" (click)="register()" type="button"
+                    class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        }
+    </div>
+    <div class="flex flex-col items-start px-3 w-full mockup-code text-lg">
+        <div>Creds Value: {{credentialForm.value | json}}</div>
+        <div>Creds Valid: {{credentialForm.status | json}}</div>
+        <div>Profile Value: {{profileForm.value | json}}</div>
+        <div>Profile Valid: {{profileForm.status | json}}</div>
     </div>
 </div>

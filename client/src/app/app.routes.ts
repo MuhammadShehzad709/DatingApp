@@ -8,6 +8,11 @@ import { authGuard } from '../core/guards/auth-guard';
 import { TestErrors } from '../features/test-errors/test-errors';
 import { NotFound } from '../shared/errors/not-found/not-found';
 import { ServerError } from '../shared/errors/server-error/server-error';
+import { MemberProfile } from '../features/members/member-profile/member-profile';
+import { MemberPhotos } from '../features/members/member-photos/member-photos';
+import { MemberMessages } from '../features/members/member-messages/member-messages';
+import { memberResolver } from '../features/members/member-resolver';
+import { preventUnsavedChangesGuard } from '../core/guards/prevent-unsaved-changes-guard';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -16,13 +21,24 @@ export const routes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [authGuard],
         children: [
-            { path: 'members', component: MemberList},
-            { path: 'members/:id', component: MemberDetailed },
+            { path: 'members', component: MemberList },
+            {
+                path: 'members/:id', component: MemberDetailed,
+                resolve:{member:memberResolver},
+                runGuardsAndResolvers:'always',
+                children: [
+                    { path: '', redirectTo: 'profile', pathMatch: "full" },
+                    { path: 'profile', component: MemberProfile, title: 'profile', canDeactivate:[preventUnsavedChangesGuard] },
+                    { path: 'photos', component: MemberPhotos, title: 'photos' },
+                    { path: 'messages', component: MemberMessages, title: 'Messages' }
+
+                ]
+            },
             { path: 'messages', component: Messages },
             { path: 'lists', component: Lists },
         ]
     },
-    {path:'tests',component:TestErrors},
-    {path:'server-error',component:ServerError},
+    { path: 'tests', component: TestErrors },
+    { path: 'server-error', component: ServerError },
     { path: '**', component: NotFound }
 ];

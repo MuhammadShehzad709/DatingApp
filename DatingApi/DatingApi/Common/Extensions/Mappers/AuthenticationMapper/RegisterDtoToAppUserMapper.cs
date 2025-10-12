@@ -11,7 +11,15 @@ namespace DatingApi.Common.Extensions.Mappers.AuthenticationMapper
             {
                 Id= Guid.NewGuid(),
                 DisplayName = dto.DisplayName,
-                Email = dto.Email
+                Email = dto.Email,
+                member=new Member
+                {
+                    DisplayName = dto.DisplayName,
+                    City= dto.City,
+                    Country= dto.Country,
+                    DateOfBirth=dto.DateOfBirth,
+                    Gender= dto.Gender,
+                }
             };
         }
     }

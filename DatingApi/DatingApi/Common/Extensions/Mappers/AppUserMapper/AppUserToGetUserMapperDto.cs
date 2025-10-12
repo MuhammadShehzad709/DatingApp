@@ -1,7 +1,7 @@
 ﻿using DatingApi.Data.Entities;
 using DatingApi.Dtos.AppUserDtos;
 
-namespace DatingApi.Common.Extensions.AppUserMapper
+namespace DatingApi.Common.Extensions.Mappers.AppUserMapper
 {
     public static class AppUserToGetUserMapperDto
     {
@@ -12,6 +12,7 @@ namespace DatingApi.Common.Extensions.AppUserMapper
                 Id = user.Id,
                 DisplayName = user.DisplayName,
                 Email = user.Email,
+                ImageUrl = user.ImageUrl,
             };
         }
     }

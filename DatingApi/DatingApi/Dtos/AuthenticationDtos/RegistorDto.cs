@@ -8,6 +8,14 @@ namespace DatingApi.Dtos.AuthenticationDtos
         [Required]
         string Email,
         [Required]
-        string Password);
+        string Password,
+        [Required]
+        string Gender,
+        [Required]
+        string City,
+        [Required]
+        string Country,
+        [Required]
+        DateOnly DateOfBirth);
  
 }

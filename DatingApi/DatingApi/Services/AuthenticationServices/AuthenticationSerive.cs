@@ -1,4 +1,4 @@
-﻿using DatingApi.Common.Extensions.AppUserMapper;
+﻿using DatingApi.Common.Extensions.Mappers.AppUserMapper;
 using DatingApi.Common.Extensions.Mappers.AuthenticationMapper;
 using DatingApi.Common.Response;
 using DatingApi.Dtos.AppUserDtos;

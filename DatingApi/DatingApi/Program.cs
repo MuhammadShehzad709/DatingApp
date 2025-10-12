@@ -1,7 +1,11 @@
+using DatingApi.ApiHelpers;
 using DatingApi.Data;
 using DatingApi.Middleware;
 using DatingApi.Repositories.AuthenticationRepositories;
+using DatingApi.Repositories.MemberRepositories;
 using DatingApi.Services.AuthenticationServices;
+using DatingApi.Services.memberServices;
+using DatingApi.Services.PhotoService;
 using DatingApi.Services.TokenService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +21,10 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationSerive>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IMemberRepository,MemberRepository>();
+builder.Services.AddScoped<IMemberService, MemberService>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinaySettings"));
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -41,5 +49,18 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+using var scope=app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<AppDbContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
 
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error accured during migration");
+}
 app.Run();

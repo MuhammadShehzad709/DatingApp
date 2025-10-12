@@ -18,7 +18,7 @@ export class AccountService {
     return this.http.post<ApiResponse<User>>(this.baseUrl + 'account/register', creds).pipe(
       tap(user => {
         if (user.isSuccess && user.data) {
-          this.setCurrentUser(user);
+          this.setCurrentUser(user.data);
         }
         else {
           alert(user.error);
@@ -31,7 +31,7 @@ export class AccountService {
     return this.http.post<ApiResponse<User>>(this.baseUrl + 'account/login', creds).pipe(
       tap(user => {
         if (user.isSuccess && user.data) {
-          this.setCurrentUser(user);
+          this.setCurrentUser(user.data);
           this.toastService.success('Login Successfully')
         }
         else if (!user.isSuccess) {
@@ -47,9 +47,9 @@ export class AccountService {
     this.currentUser.set(null);
   }
   //Set Current Method is here
-  setCurrentUser(user: ApiResponse<User>) {
+  setCurrentUser(user: User) {
     console.log('SuccessResponse', user);
-    this.currentUser.set(user.data);
-    localStorage.setItem('user', JSON.stringify(user.data));
+    this.currentUser.set(user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }

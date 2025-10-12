@@ -26,6 +26,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
             break;
           case 401:
+            console.log('hello')
             toast.error('Unauthorized')
             break;
           case 404:
