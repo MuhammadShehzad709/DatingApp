@@ -11,18 +11,25 @@ using Microsoft.OpenApi.Services;
 
 namespace DatingApi.Services.memberServices
 {
-    public class MemberService(IMemberRepository repository,IPhotoService photoService) : IMemberService
+    public class MemberService(IMemberRepository repository, IPhotoService photoService) : IMemberService
     {
 
-        public async Task<ApiResponse<PaginationReult<Member>>> GetAsyMembersAsync(PagingParams pagingParams)
+        public async Task<ApiResponse<PaginationReult<GetMemberDto>>> GetAsyMembersAsync(MemberParams memberParams)
         {
-            return ApiResponse<PaginationReult<Member>>.SuccessResponse(await repository.GetAsyMembersAsync(pagingParams));
+            var query = await repository.GetAsyMembersAsync(memberParams);
+            return ApiResponse<PaginationReult<GetMemberDto>>.SuccessResponse(
+                 new PaginationReult<GetMemberDto>
+                 {
+                     MetaData = query.MetaData,
+                     Items = query.Items.MapList()
+                 }
+            );
         }
 
         public async Task<ApiResponse<GetMemberDto>> GetMemberByIdAsync(Guid Id)
         {
-            var data= await repository.GetMemberByIdAsync(Id);
-            if(data is null)
+            var data = await repository.GetMemberByIdAsync(Id);
+            if (data is null)
             {
                 return ApiResponse<GetMemberDto>.ErrorResponse("The User No Exist");
             }
@@ -42,14 +49,14 @@ namespace DatingApi.Services.memberServices
         {
             repository.Update(member);
         }
-        public async Task<ApiResponse<int>> UpdateMember(UpdateMemberDto updateMemberDto,string Id)
+        public async Task<ApiResponse<int>> UpdateMember(UpdateMemberDto updateMemberDto, string Id)
         {
             var member = await repository.GetMemberForUpdate(Guid.Parse(Id));
             if (member == null) return ApiResponse<int>.ErrorResponse("Could not get member");
             member.DisplayName = updateMemberDto.DisplayName ?? member.DisplayName;
             member.Description = updateMemberDto.Description ?? member.Description;
-            member.City=updateMemberDto.City ?? member.City;
-            member.Country=updateMemberDto.Country ?? member.Country;
+            member.City = updateMemberDto.City ?? member.City;
+            member.Country = updateMemberDto.Country ?? member.Country;
             if (await SaveAllAsync()) return ApiResponse<int>.SuccessResponse(1);
             return ApiResponse<int>.ErrorResponse("Faild to updateMember");
         }
@@ -58,7 +65,7 @@ namespace DatingApi.Services.memberServices
             var member = await repository.GetMemberForUpdate(Guid.Parse(Id));
             if (member is null) return ApiResponse<GetPhotoDto>.ErrorResponse("Can Not Update Member");
             var result = await photoService.UploadPhotoAsync(file);
-            if(result.Error!=null) return ApiResponse<GetPhotoDto>.ErrorResponse(result.Error.Message);
+            if (result.Error != null) return ApiResponse<GetPhotoDto>.ErrorResponse(result.Error.Message);
             var photo = new Photo
             {
                 Url = result.SecureUrl.AbsoluteUri,
@@ -68,7 +75,7 @@ namespace DatingApi.Services.memberServices
             if (member.ImageUrl == null)
             {
                 member.ImageUrl = photo.Url;
-                member.User.ImageUrl=photo.Url;
+                member.User.ImageUrl = photo.Url;
             }
             member.photos.Add(photo);
             if (await SaveAllAsync()) return ApiResponse<GetPhotoDto>.SuccessResponse(photo.Map());
@@ -79,9 +86,9 @@ namespace DatingApi.Services.memberServices
         {
             var member = await repository.GetMemberForUpdate(Guid.Parse(memberId));
             if (member is null) return ApiResponse<int>.ErrorResponse("Cannot get member from the token");
-            var photo=member.photos.SingleOrDefault(x=>x.Id==Id);
+            var photo = member.photos.SingleOrDefault(x => x.Id == Id);
             if (member.ImageUrl == photo?.Url || photo == null) return ApiResponse<int>.ErrorResponse("Cannot set this as main photo");
-            member.ImageUrl=photo?.Url;
+            member.ImageUrl = photo?.Url;
             member.User.ImageUrl = photo?.Url;
             if (await repository.SaveAllAsync()) return ApiResponse<int>.SuccessResponse(1);
             return ApiResponse<int>.ErrorResponse("Problem Setting Main photo");
@@ -91,11 +98,11 @@ namespace DatingApi.Services.memberServices
         {
             var member = await repository.GetMemberForUpdate(Guid.Parse(memberId));
             if (member is null) return ApiResponse<int>.ErrorResponse("Cannot get member from the token");
-            var photo=member.photos.SingleOrDefault(x=>x.Id==photoId);
+            var photo = member.photos.SingleOrDefault(x => x.Id == photoId);
             if (photo is null || photo.Url == member.ImageUrl) return ApiResponse<int>.ErrorResponse("This photo cannot be deleted");
-            if(photo.publicID is not null)
+            if (photo.publicID is not null)
             {
-                var result=await photoService.DeletePhotoAsync(photo.publicID);
+                var result = await photoService.DeletePhotoAsync(photo.publicID);
                 if (result.Error != null) return ApiResponse<int>.ErrorResponse(result.Error.Message);
             }
             member.photos.Remove(photo);

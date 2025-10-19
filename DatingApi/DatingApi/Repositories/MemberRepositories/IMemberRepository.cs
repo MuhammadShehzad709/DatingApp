@@ -7,7 +7,7 @@ namespace DatingApi.Repositories.MemberRepositories
     {
         void Update(Member member);
         Task<bool>SaveAllAsync();
-        Task<PaginationReult<Member>> GetAsyMembersAsync(PagingParams pagingParams);
+        Task<PaginationReult<Member>> GetAsyMembersAsync(MemberParams memberParams);
         Task<Member?>GetMemberByIdAsync(Guid Id);
         Task<List<Photo>>GetPhotosForMemberAsync(Guid memberId);
         Task<Member?> GetMemberForUpdate(Guid Id);

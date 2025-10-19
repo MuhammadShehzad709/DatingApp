@@ -13,7 +13,7 @@ namespace DatingApi.Services.memberServices
 
         void Update(Member member);
         Task<bool> SaveAllAsync();
-        Task<ApiResponse<PaginationReult<Member>>> GetAsyMembersAsync(PagingParams pagingParams);
+        Task<ApiResponse<PaginationReult<GetMemberDto>>> GetAsyMembersAsync(MemberParams memberParams);
         Task<ApiResponse<GetMemberDto>> GetMemberByIdAsync(Guid Id);
         Task<ApiResponse<List<GetPhotoDto>>> GetPhotosForMemberAsync(Guid memberId);
         Task<ApiResponse<GetPhotoDto>> AddPhoto(IFormFile file,string Id);

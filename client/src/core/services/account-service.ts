@@ -44,6 +44,7 @@ export class AccountService {
   //LogoutMethod is Here
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('filter');
     this.currentUser.set(null);
   }
   //Set Current Method is here

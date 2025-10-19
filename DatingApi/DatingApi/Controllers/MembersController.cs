@@ -11,9 +11,10 @@ namespace DatingApi.Controllers
     public class MembersController(IMemberService service):BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Getmember([FromQuery] PagingParams pagingParams)
+        public async Task<IActionResult> Getmember([FromQuery] MemberParams memberParams)
         {
-            return Ok(await service.GetAsyMembersAsync(pagingParams));
+            memberParams.CurrentMemberId=Guid.Parse(User.GetMemberId());
+            return Ok(await service.GetAsyMembersAsync(memberParams));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult>GetMember(Guid id)
