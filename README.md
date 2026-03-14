@@ -1,100 +1,200 @@
-# Hi, I'm Muhammad Shehzad 👋
+# 💘 DatingApp — Full Stack Dating Platform
 
-### Full Stack .NET Developer from Pakistan 🇵🇰
+> A complete dating web application built solo with **Angular** and **ASP.NET Core**, featuring real-time messaging, user profiles, matching system, and secure JWT authentication.
 
-I build complete web and desktop solutions using **C# / ASP.NET Core** on the backend and **Angular / Blazor** on the frontend. 2 years of hands-on experience delivering real-world projects — including a remote internship at Future Excel.
-
----
-
-## 🛠️ Tech Stack
-
-**Backend**
-![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
-![.NET Core](https://img.shields.io/badge/.NET_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![ASP.NET MVC](https://img.shields.io/badge/ASP.NET_MVC-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![Web API](https://img.shields.io/badge/Web_API-512BD4?style=flat-square&logo=dotnet&logoColor=white)
-![Entity Framework](https://img.shields.io/badge/Entity_Framework-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white)
+![.NET](https://img.shields.io/badge/ASP.NET_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT_Auth-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![SignalR](https://img.shields.io/badge/SignalR-0078D4?style=flat-square)
-
-**Frontend**
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white)
-![Blazor](https://img.shields.io/badge/Blazor-512BD4?style=flat-square&logo=blazor&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
-
-**Desktop**
-![WPF](https://img.shields.io/badge/WPF-0078D4?style=flat-square&logo=windows&logoColor=white)
-![WinForms](https://img.shields.io/badge/WinForms-0078D4?style=flat-square&logo=windows&logoColor=white)
-
-**Database & Tools**
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
-![Visual Studio](https://img.shields.io/badge/Visual_Studio-5C2D91?style=flat-square&logo=visualstudio&logoColor=white)
+![Solo Project](https://img.shields.io/badge/Solo_Project-purple?style=flat-square)
 
 ---
 
-## 🚀 What I Build
+## 🚀 Live Demo
 
-- 🔗 **REST APIs** — Clean, secure, well-documented APIs with JWT auth
-- 🌐 **Full Stack Web Apps** — Angular or Blazor frontend + ASP.NET Core backend
-- 💻 **Desktop Applications** — Windows apps with WPF / WinForms
-- ⚡ **Real-time Features** — Live chat and notifications using SignalR
-- 🗄️ **Database Design** — SQL Server & PostgreSQL with Entity Framework Core
+🔗 [View Live App](#) &nbsp;|&nbsp; 📂 [Backend Repo](#) &nbsp;|&nbsp; 📂 [Frontend Repo](#)
 
 ---
 
-## 📌 Featured Projects
+## ✨ Features
 
-### 💘 DatingApp — Full Stack Dating Platform
-> Angular + ASP.NET Core | JWT Auth | SignalR Real-time Chat | SQL Server
+### 👤 User Profiles
+- Register & login with secure JWT authentication
+- Upload and manage profile photos (Cloudinary)
+- Edit bio, interests, age, and location
+- View other users' detailed profiles
 
-A complete dating platform built solo — user profiles, real-time messaging, matching system, photo uploads, and admin panel.
+### 💬 Real-Time Chat
+- Instant messaging using **SignalR WebSockets**
+- Message read/unread status
+- Full chat history stored in database
+- Online/offline presence indicators
 
-🔗 [View Repo](https://github.com/MuhammadShehzad709/DatingApp)
+### 💕 Matching System
+- Like / Unlike other users
+- See who liked you
+- Mutual likes = Match!
+- Filter users by age, gender, location
 
-> 💡 *Local project — clone the repo and run locally using the setup instructions in the repo README.*
+### 🔒 Security & Auth
+- JWT token-based authentication
+- Role-based authorization (Admin / Member)
+- Password hashing with ASP.NET Identity
+- Protected API endpoints
 
----
-
-### 🛒 eCommerce Platform — Blazor + ASP.NET Core
-> Blazor WASM + ASP.NET Core | SQL Server + PostgreSQL | Team Project
-
-Full-featured eCommerce app with shopping cart, order management, and secure checkout. Built as full stack member in a team.
-
-🔗 [View Repo](https://github.com/Asim-AKM/Netrex_ECommerce)
-
----
-
-### 💊 Medical Store Management System — WinForms
-> C# + WinForms | SQL Server | Desktop Application
-
-Desktop app for managing medicine inventory, sales billing, supplier management, and report printing.
-
-🔗 [View Repo](https://github.com/MuhammadShehzad709/Medical-Store)
-
----
-
-## 📊 GitHub Stats
-
-![Muhammad Shehzad's GitHub Stats](https://github-readme-stats.vercel.app/api?username=MuhammadShehzad709&show_icons=true&theme=tokyonight&hide_border=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=MuhammadShehzad709&layout=compact&theme=tokyonight&hide_border=true)
+### 🛠️ Admin Panel
+- Manage users and roles
+- Photo moderation (approve/reject)
+- Platform overview
 
 ---
 
-## 📫 Contact Me
+## 🏗️ Tech Stack
 
-I'm available for freelance projects!
+### Backend — ASP.NET Core
+| Technology | Purpose |
+|-----------|---------|
+| ASP.NET Core 8 Web API | REST API |
+| Entity Framework Core | ORM / Database |
+| SQL Server | Database |
+| ASP.NET Identity | User management |
+| JWT Bearer Tokens | Authentication |
+| SignalR | Real-time messaging |
+| AutoMapper | DTO mapping |
+| Cloudinary | Photo storage & upload |
 
-[![Email](https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:muhammadshehzaddeveloper@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhammed-shehzad-420654334)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/MuhammadShehzad709)
+### Frontend — Angular
+| Technology | Purpose |
+|-----------|---------|
+| Angular 17 | SPA Framework |
+| TypeScript | Language |
+| Bootstrap 5 | UI Styling |
+| Angular Route Guards | Protected routes |
+| HTTP Interceptors | Auto token attach |
+| RxJS | Async / Reactive streams |
 
 ---
 
-⭐ *If you find my work useful, please consider starring the repos!*
+## 📁 Project Structure
+
+```
+DatingApp/
+├── API/                            # ASP.NET Core Backend
+│   ├── Controllers/
+│   │   ├── AccountController.cs    # Register, Login
+│   │   ├── UsersController.cs      # Profile CRUD
+│   │   ├── MessagesController.cs   # Chat messages
+│   │   └── LikesController.cs      # Like / Unlike
+│   ├── Hubs/
+│   │   └── MessageHub.cs           # SignalR real-time
+│   ├── Models/
+│   ├── DTOs/
+│   ├── Data/
+│   └── Helpers/
+│
+└── client/                         # Angular Frontend
+    └── src/app/
+        ├── members/                # User profiles
+        ├── messages/               # Chat UI
+        ├── lists/                  # Likes & matches
+        ├── admin/                  # Admin panel
+        └── _guards/                # Route protection
+```
+
+---
+
+## 🔑 API Endpoints
+
+### Auth
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/account/register` | Register new user |
+| POST | `/api/account/login` | Login & get JWT token |
+
+### Users
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/users` | Get all users (with filters) |
+| GET | `/api/users/{username}` | Get user profile |
+| PUT | `/api/users` | Update own profile |
+| POST | `/api/users/add-photo` | Upload profile photo |
+
+### Messages
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/messages` | Send message |
+| GET | `/api/messages` | Get inbox / outbox |
+| GET | `/api/messages/thread/{username}` | Get chat thread |
+| DELETE | `/api/messages/{id}` | Delete message |
+
+### Likes
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/likes/{username}` | Like a user |
+| GET | `/api/likes` | Get liked / likedBy list |
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- .NET 8 SDK
+- Node.js 18+
+- SQL Server
+- Cloudinary account (free)
+
+```bash
+# Clone the repo
+git clone https://github.com/MuhammadShehzad709/DatingApp.git
+cd DatingApp
+
+# Backend
+cd API
+# Add TokenKey and Cloudinary keys in appsettings.json
+dotnet restore
+dotnet ef database update
+dotnet run
+
+# Frontend (new terminal)
+cd client
+npm install
+ng serve
+```
+
+Open browser at `http://localhost:4200`
+
+---
+
+## 📸 Screenshots
+
+> *(Add screenshots here)*
+
+| Login | Profiles | Chat |
+|-------|----------|------|
+| ![](#) | ![](#) | ![](#) |
+
+---
+
+## 🎯 What I Built & Learned
+
+- Designed complete **REST API** with clean architecture and repository pattern
+- Implemented **real-time bidirectional chat** using SignalR WebSockets
+- Built **JWT auth flow** from scratch including role-based access
+- Handled **photo uploads** to Cloudinary with transformations
+- Created reusable **Angular components**, services, interceptors, and guards
+- Applied **pagination, filtering & sorting** at API level
+- Used **AutoMapper** for clean DTO-to-Entity mapping
+
+---
+
+## 👨‍💻 Developer
+
+**Muhammad Shehzad** — Full Stack .NET Developer
+📧 muhammadshehzaddeveloper@gmail.com | 🔗 [GitHub](https://github.com/MuhammadShehzad709) | [LinkedIn](https://www.linkedin.com/in/muhammed-shehzad-420654334)
+
+---
+
+## 📄 License
+
+MIT License — feel free to use this project as reference.
